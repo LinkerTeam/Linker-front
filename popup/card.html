@@ -1,0 +1,355 @@
+<!-- ******************************************
+*  Author : pil   
+*  Created On : Wed Feb 21 2018
+*  File : card.html
+******************************************* -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="./fontawesome5.0.6/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet">
+</head>
+<style>
+
+
+/**
+ * html5doctor.com Reset Stylesheet v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/)
+ * Richard Clark (http://richclarkdesign.com)
+ * http://cssreset.com
+ */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video
+ {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+body {
+    line-height:1;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+nav ul {
+    list-style:none;
+}
+blockquote, q {
+    quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+del {
+    text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+input, select {
+    vertical-align:middle;
+}
+
+
+
+
+/* 팝업관련 css */
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        transition: opacity 500ms;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .popupCard {
+        margin: 70px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        width: 756px;
+        position: relative;
+        transition: all 5s ease-in-out;
+        background-color: rgb(237, 239, 240);
+    }
+
+    .popupCard * {
+        margin: 5px;
+    }
+
+    .popupCard section {
+        width: 500px;
+    }
+
+    .popupCard:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+
+    .popupCard section{
+        float: left;
+    }
+
+    .popupCard aside {
+        width: 210px;
+        float: right;
+        margin-top: 20px;
+    }
+    
+    .popupCard ul {
+        list-style:none;
+    }
+
+    .popupCard aside ul, .popupCard aside ul li{
+        margin-top: 2px;
+    }
+
+    .popupCard aside ul li div {
+        text-align: left;
+        width: 168px; 
+        background-color:rgb(226, 228, 230);
+        padding: 6px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .popupCard aside ul li div:hover, .file:hover, .popup-profile:hover, .comment-attachment:hover {
+        background-color:rgb(204, 205, 206);
+    }
+
+    .popupCard aside ul li div:active {
+        background-color:rgb(159, 161, 161);
+        color: white;
+    }
+
+    .popupCard a {
+        color: gray;
+        text-decoration: none;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .popup-content {
+        margin-left: 30px;
+        width: auto;
+    }
+
+    .fileMime {
+        background-color:rgb(226, 228, 230);;
+        text-align: center;
+        line-height: 80px;
+        width: 130px;
+        height: 80px;
+        border-radius: 10px;
+        /* float: left; */
+    }
+
+    .fileList {
+        display: block;
+    }
+
+    .fileMime, .fileInfo{
+        display: inline-block;
+    }
+
+    .popup-comment {
+        display: inline-block;
+    }
+
+    .popup-profile {
+        background-color:rgb(226, 228, 230);
+        border-radius: 3em;
+        padding: 7px;
+        cursor: default;
+        vertical-align: top;
+    }
+
+    .popup-comment-res {
+        background-color: white;
+        margin-top: 0px;
+        padding-right: 0px;
+        text-align: right;
+    }
+
+    .reply {
+        overflow:visible;
+        background-image: none;
+        border: none;
+        min-height: 50px;
+        margin-bottom: 0px;
+        resize: none;
+    }
+
+    .comment-attachment {
+        margin-right: 0px;
+        margin-bottom: 0px;
+    }
+</style>
+
+<div class="box">
+    <a class="button" href="#popupBox">CardName</a>
+</div>
+
+<div id="popupBox" class="overlay">
+    <div class="popupCard">
+        <section>
+            <div class="title">
+                <i class="far fa-credit-card"></i>
+                <strong>Title</strong>
+                <div class="popup-content">
+                    In CardList
+                </div>
+                <div class="popup-content">
+                    <i class="fas fa-align-left"></i>
+                    Edit the description...
+                    <!-- <br>
+                    Description<br>
+                    <a href="#popupBox">Edit</a> -->
+                </div>
+            </div>
+            <div>
+                <i class="fas fa-paperclip"></i>
+                <strong>Attachments</strong>
+                <div class="popup-content">
+                    <ul class="fileList">
+                        <li class="file">
+                            <div class="fileMime">XML</div>
+                            <div class="fileInfo">FileName
+                                <br>Added Feb 13 at 10:11 AM
+                                <a href="#popupBox" class="deleteBtn">Delete</a>
+                            </div>
+                        </li>
+                        <li class="file">
+                            <div class="fileMime">XML</div>
+                            <div class="fileInfo">FileName
+                                <br>Added Feb 13 at 10:11 AM
+                                <a href="#popupBox" class="deleteBtn">Delete</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <i class="far fa-comments"></i>
+                <strong>Comment</strong>
+                <div class="popup-content">
+                    <div class="popup-comment popup-profile">Me</div>
+                    <div class="popup-comment popup-commentBox">
+                        <textarea class="reply" name="reply" onkeydown="resizeComment(this)" onkeyup="resizeComment(this)" placeholder="add Comment.."></textarea>
+                        <div class="popup-comment-res">
+                            <i class="fas fa-paperclip comment-attachment"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <aside>
+            <div>
+                <strong>Add</strong>
+            </div>
+            <ul>
+                <li>
+                    <div>Members</div>
+                </li>
+                <li>
+                    <div>Labels</div>
+                </li>
+                <li>
+                    <div>Due Date</div>
+                </li>
+                <li>
+                    <div>Attachment</div>
+                </li>
+            </ul>
+            <div>
+                <strong>Actions</strong>
+            </div>
+            <ul>
+                <li>
+                    <div>Move</div>
+                </li>
+                <li>
+                    <div>Copy</div>
+                </li>
+                <li>
+                    <div>Archive</div>
+                </li>
+            </ul>
+        </aside>
+        <a class="close" href="#">&times;</a>
+    </div>
+</div>
+
+<script>
+    function resizeComment(obj) {
+        obj.style.height = "1px";
+        obj.style.height = (12 + obj.scrollHeight) + "px";
+    }
+</script>
+</html>
