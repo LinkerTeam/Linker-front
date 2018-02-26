@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,53 +10,419 @@
     <link rel="stylesheet" type="text/css" href="common.css">
     <link rel="stylesheet" type="text/css" href="soyoung.css">
 </head>
+
 <body>
+    <!-- projectMain -->
     <div id="projectMainWrapContent">
         <div class="adminInfoContent">
             <div class="adminInfo">
-                <div class="adminInfoProfile"><i class="fas fa-user-circle fa-3x"></i></div>
-                    <div class="adminInfoName">
-                        <label class="nickName">nickName</label>
-                    </div>
+                <div class="adminInfoProfile">
+                    <i class="fas fa-user-circle fa-3x"></i>
+                </div>
+                <div class="adminInfoName">
+                    <label class="nickName">nickName</label>
+                </div>
             </div>
         </div>
-            <div class="tabInfo">
-                <div class="tabs">
-                    <button class="tablinks" onclick="openInfo(0)">Projects</button>
-                    <button class="tablinks" onclick="openInfo(1)">Teams</button>
+        <div class="tabInfo">
+            <div class="tabs">
+                <button class="tablinks" onclick="openInfo(0)">Projects</button>
+                <button class="tablinks" onclick="openInfo(1)">Teams</button>
+            </div>
+            <!-- tab1: projectList -->
+            <div id="projectList" class="tabContent">
+                <div id="projectListWrapContent">
+                    <section class="content">
+                        <div class="box">
+                            <div class="boxHeader">
+                                <h3>Project List</h3>
+                            </div>
+                            <hr>
+                            <hr>
+                            <div class="boxBody">
+                                <!-- 한 팀에서 만든 프로젝트들 -->
+                                <table width="100%">
+                                    <tr class="project">
+                                        <td>
+                                            <div>
+                                                <i class="fas fa-users"></i>&nbsp;Team Name
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="projectBox">
+                                            <!-- 존재하는 프로젝트 -->
+                                            <div class="exsistProjectBox">
+                                                <span class="projectName">project Name</span>
+                                                <!-- 존재하는 프로젝트의 메뉴버튼 -->
+                                                <button class="projectSetting" onclick="exsistProjectSettingClick()">&#9776;</button>
+                                            </div>
+                                            <!-- 달성 또는 숨기기 기능이 있는 모달창 -->
+                                            <div class="modal" id="exsistProjectModal">
+                                                <div class="modalContent">
+                                                    <div>
+                                                        <div class="close" onclick="close()">&times;</div>
+                                                    </div>
+                                                    <br>
+                                                    <button>Achive</button>
+                                                    <button>Hide</button>
+                                                </div>
+                                            </div>
+                                            <!-- 생성할 프로젝트 버튼 -->
+                                            <div class="createProjectBox" onclick="createProjectBtnClick()">
+                                                <div class="projectName">create New Project...
+                                                    <br>
+                                                    <strong>+</strong>
+                                                </div>
+                                            </div>
+                                            <!-- 생성할 프로젝트 제목입력할 모달창 -->
+                                            <div class="modal" id="createProjectModal">
+                                                <div class="modalContent">
+                                                    <span>
+                                                        Create Project
+                                                    </span>
+                                                    <span class="close" onclick="close()">&times;</span>
+                                                    <hr>
+                                                    <label>Title</label>
+                                                    <input type="text" name="projectTitleTxt" id="projectTitleTxt">
+                                                    <br>
+                                                    <br>
+                                                    <button onclick="createProject()">Create</button>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </td>
+                                    </tr>
+                                    <!-- 한 팀에서 만든 프로젝트들 끝 -->
+                                </table>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <div class="tabsContent">
-                    <embed id="boards" class="tabContent" src="projectList.html">
-                    <embed id="Members" class="tabContent" src="teamList.html">
+            </div>
+            <!-- tab2: teamList -->
+            <div id="teamList" class="tabContent">
+                <div id="teamListWrapContent">
+                    <div class="box" id="searchAddMemberBox">
+                        <!-- 멤버 검색 -->
+                        <section class="content">
+                            <div class="boxHeader">
+                                <h3>Member Search</h3>
+                            </div>
+                            <hr>
+                            <div class="boxBody">
+                                <input type="text" name="memberSearch" id="memberSearch" placeholder="  Search Member..">
+                            </div>
+                        </section>
+
+                        <!-- 멤버 추가 -->
+                        <section class="content">
+                            <div class="boxHeader">
+                                <h3>Member Add</h3>
+                            </div>
+                            <hr>
+                            <div class="boxBody">
+                                <!-- 한 명의 멤버 추가할 경우 -->
+                                <button class="addBtn" id="addMemberBtn" onclick="addMemberClick()">Add by Name or Email</button>
+                                <!--  한 명의 멤버 추가버튼을 누를 때 모달창 -->
+                                <div class="modal" id="addMemberModal">
+                                    <div class="modalContent">
+                                        <div>
+                                            <span class="close" onclick="modalClose()">&times;</span>
+                                        </div>
+                                        Add Member
+                                        <hr> Team:
+                                        <select>
+                                            <option value="Team Name">Team Name</option>
+                                            <option value="Team Name">Team Name</option>
+                                            <option value="Team Name">Team Name</option>
+                                            <option value="Team Name">Team Name</option>
+                                        </select>
+                                        <br>
+                                        <br> Email or UserName:
+                                        <input type="text" id="memberTxt" name="memberTxt">
+                                        <br>
+                                        <br> Search for a person in Trello by name or email address, or enter an email address
+                                        to invite someone new.
+                                        <br>
+                                        <br>
+                                        <button>Add To Team..</button>
+                                    </div>
+                                </div>
+                                <!-- 여러 명 멤버 추가할 경우 -->
+                                <button class="addBtn" id="addMemberschBtn" onclick="addMembersClick()">Bulk Add Members</button>
+                                <!--  여러 명 멤버 추가버튼을 누를 때 모달창 -->
+                                <div class="modal" id="addMembersModal">
+                                    <div class="modalContent">
+                                        <div>
+                                            <span class="close" onclick="modalClose()">&times;</span>
+                                        </div>
+                                        Add Members
+                                        <hr> Team:
+                                        <select>
+                                            <option value="Team Name">Team Name</option>
+                                            <option value="Team Name">Team Name</option>
+                                            <option value="Team Name">Team Name</option>
+                                            <option value="Team Name">Team Name</option>
+                                        </select>
+                                        <br>
+                                        <br>
+                                        <label>Emails or Usernames:</label>
+                                        <br>
+                                        <textarea name="membersTxt" id="membersTxt" cols="30" rows="10" placeholder="e.g. taco@gmail.com; chorize@gmail.com pede@gmail.com; @relly; @sunny"></textarea>
+                                        <br>
+                                        <br>
+                                        <button>Add To Team..</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- 팀 목록 -->
+                    <div class="box" id="teamListBox">
+                        <section class="content">
+                            <div class="boxHeader">
+                                <h3>Team List</h3>
+                            </div>
+                            <hr>
+                            <hr>
+                            <div class="ListBoxBody">
+                                <table width="100%">
+                                    <!-- 한 팀의 정보 -->
+                                    <tr class="team">
+                                        <td>
+                                            <div>
+                                                <i class="fas fa-users"></i>&nbsp;Team Name
+                                                <!-- 한 팀의 상세정보 버튼:멤버 목록 -->
+                                                <button class="teamBtn" onclick="membersClick(0)">
+                                                    <i class="fas fa-angle-down"></i>
+                                                </button>
+                                                <!-- 멤버 목록 모달창 -->
+                                                <div class="members" id="membersContent">
+                                                    <section class="content">
+                                                        <div class="boxHeader">
+                                                            <h3>Member List</h3>
+                                                        </div>
+                                                        <hr>
+                                                        <hr>
+                                                        <div class="ListBoxBody">
+                                                            <table width="100%">
+                                                                <tr class="member">
+                                                                    <td>
+                                                                        <div>
+                                                                            <i class="fas fa-user"></i>&nbsp;Member Name
+                                                                            <!-- 한 멤버의 설정버튼 -->
+                                                                            <div class="memberBtns">
+                                                                                <!-- 한 멤버의 활동이력 보기 버튼 -->
+                                                                                <button class="memberBtn">Activity</button>
+                                                                                <!-- 한 멤버의 권한 설정 버튼 -->
+                                                                                <button class="memberBtn" onclick="permissionMemberClick()">Permissions</button>
+                                                                                <!-- 한 멤버의 권한 설정 모달창 -->
+                                                                                <div class="modal" id="permissionModal">
+                                                                                    <div class="modalContent">
+                                                                                        <div>
+                                                                                            <span class="close" onclick="modalClose()">&times;</span>
+                                                                                        </div>
+                                                                                        Change Permissions
+                                                                                        <hr>
+                                                                                        <div>
+                                                                                            <button class="permissionBtn" id="adminPermissionBtn">
+                                                                                                <h2>Admin</h2>
+                                                                                                <br>
+                                                                                                <br> Can view, create and edit
+                                                                                                team boards, and change settings
+                                                                                                for the team.
+                                                                                                <br>
+                                                                                                <br>
+                                                                                            </button>
+                                                                                            <button class="permissionBtn" id="nomalPermissionBtn">
+                                                                                                <br>
+                                                                                                <br>
+                                                                                                <h2>Nomal</h2>
+                                                                                                <br>
+                                                                                                <br> Can view, create and edit
+                                                                                                team boards, but not change
+                                                                                                settings.
+                                                                                                <br>
+                                                                                                <br>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- 한 멤버의 삭제 설정 버튼 -->
+                                                                                <button class="memberBtn" onclick="removeMemberClick()">Remove..</button>
+                                                                                <!-- 한 멤버의 삭제 설정 모달창 -->
+                                                                                <div class="modal" id="removeModal">
+                                                                                    <div class="modalContent">
+                                                                                        <div>
+                                                                                            <span class="close" onclick="modalClose()">&times;</span>
+                                                                                        </div>
+                                                                                        Remove Member
+                                                                                        <hr>
+                                                                                        <div>
+                                                                                            <button id="removeBtn">
+                                                                                                <br>
+                                                                                                <br>
+                                                                                                <h2>Remove from team</h2>
+                                                                                                <br>
+                                                                                                <br> Remove all access to the
+                                                                                                team. The member will remain
+                                                                                                on all their boards in this
+                                                                                                team. They will receive a
+                                                                                                notification.
+                                                                                                <br>
+                                                                                                <br>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <hr>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="member">
+                                                                    <td>
+                                                                        <div>
+                                                                            <i class="fas fa-user"></i>&nbsp;Member Name
+
+                                                                            <div class="memberBtns">
+                                                                                <button class="memberBtn">Activity</button>
+                                                                                <button class="memberBtn">Permissions</button>
+                                                                                <button class="memberBtn">Remove..</button>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <hr>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </td>
+                                    </tr>
+                                    <!-- 한 팀의 정보 끝 -->
+                                </table>
+                            </div>
+                            <hr>
+                            <hr>
+                        </section>
+                    </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </body>
+<!-- teamList -->
 <script>
+    var num = 0;
+    var modalState = 0;
+
+    function addMemberClick() {
+        var addMemberModal = document.getElementById("addMemberModal");
+        addMemberModal.style.display = "block";
+        modalState = 1;
+    }
+    function addMembersClick() {
+        var addMembersModal = document.getElementById("addMembersModal");
+        addMembersModal.style.display = "block";
+        modalState = 1;
+    }
+    function permissionMemberClick() {
+        var permissionModal = document.getElementById("permissionModal");
+        permissionModal.style.display = "block";
+        modalState = 1;
+    }
+    function removeMemberClick() {
+        var removeModal = document.getElementById("removeModal");
+        removeModal.style.display = "block";
+        modalState = 1;
+    }
+    //모달창에서 x를 누르면 창이 닫아지는 함수
+    function modalClose() {
+        console.log("click");
+        var modal = document.getElementsByClassName("modal");
+        for (var i = 0; i < modal.length; i++) {
+            console.log("머냐능 왜 안되냐능");
+            console.log(modal[i].style.display);
+            if (modal[i].style.display == "block") {
+                modal[i].style.display = "none";
+            }
+            modalState = 0;
+        }
+        console.log(modalState);
+    }
+    //team목록에서 downBtn을 누르면 member목록이 나타나게 하는 함수
+    function membersClick(num) {
+        var members = document.getElementsByClassName("members");
+        if (modalState == 0) {
+            members[num].style.display = "block";
+            modalState = 1;
+            console.log(modalState);
+        } else if (modalState == 1) {
+            members[num].style.display = "none";
+            modalState = 0;
+            console.log(modalState);
+        }
+    }
+
+
+// projectList
+    var exsistProjectModal = document.getElementById("exsistProjectModal");
+    var createProjectModal = document.getElementById("createProjectModal");
+    var close = document.getElementsByClassName("close");
+    var modalState = 0;
+    // 새로운 프로젝트 생성 버튼을 누를 경우 모달창 보이기 기능
+    function createProjectBtnClick() {
+        createProjectModal.style.display = "block";
+        modalState = 1;
+        console.log(modalState);
+    }
+    // 존재하는 프로젝트 메뉴 버튼을 누를 경우 모달창 보이기 기능
+    function exsistProjectSettingClick() {
+        exsistProjectModal.style.display = "block";
+        modalState = 1;
+        console.log(modalState);
+    }
+    // 존재하는 프로젝트 모달창 x표를 누르면 모달창 닫기 기능
+    close[0].onclick = function close0() {
+        exsistProjectModal.style.display = "none";
+        console.log("0");
+        modalState = 0;
+    }
+    // 생성할 프로젝트 모달창 x표를 누르면 모달창 닫기 기능    
+    close[1].onclick = function close1() {
+        createProjectModal.style.display = "none";
+        console.log("1");
+        modalState = 0;
+    }
+
+
+//projectMain
     var tablinks = document.getElementsByClassName('tablinks'); /* 0: boards 1: members */
     var tabContent = document.getElementsByClassName('tabContent');
     var btn = document.querySelector('button');
-
     /* tabsContent 초기화 내용: tablinks[0] */
-    for(var i=0;i<tablinks.length;i++){
-        if(i==0){
-            tabContent[i].style.display="block";
-        }else{
-            tabContent[i].style.display="none";
-        } 
+    for (var i = 0; i < tablinks.length; i++) {
+        if (i == 0) {
+            tabContent[i].style.display = "block";
+        } else {
+            tabContent[i].style.display = "none";
+        }
     }
-
     /* 탭에 대한 정보를 tabsContent에 출력하는 함수 */
-    function openInfo(num){
-        for(var i=0;i<tablinks.length;i++){
-        if(num==i){
-            tabContent[num].style.display="block";
-        }else{
-            tabContent[i].style.display="none";
-        } 
+    function openInfo(num) {
+        for (var i = 0; i < tablinks.length; i++) {
+            if (num == i) {
+                tabContent[num].style.display = "block";
+            } else {
+                tabContent[i].style.display = "none";
+            }
+        }
     }
-    }
-    
 </script>
 </html>
