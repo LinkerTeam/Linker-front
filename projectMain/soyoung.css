@@ -1,0 +1,239 @@
+.content div{
+    padding:15px;
+}
+.modal{
+    display: none;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.596);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    border-radius: 5px;
+    position: fixed;
+}
+.modalContent{
+    position: relative;
+    background-color: #fefefe;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    top:30%;
+    width: 500px;
+    height: 300px;
+    
+}
+.modalContent>button{
+    margin: auto 0;
+    width: 180px;
+    border:none;
+    background-color: rgb(190, 189, 189);
+    margin: 0 5px 5px 5px;
+    border-radius: 5px;
+    height: 18px;
+}
+.modalContent>div{
+    height: 10px;
+    padding: 2px;
+}
+.close{
+    float: right;
+    size: 20px;
+    color:black;
+}
+/* 스크롤 */
+::-webkit-scrollbar { /* the scrollbar */
+    width: 10px;
+    height: 10px;
+} 
+::-webkit-scrollbar-track { /* the track (progress bar) of the scrollbar. */
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+} 
+::-webkit-scrollbar-thumb { /* the draggable scrolling handle. */
+    background: #096e80;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background:#096e80;
+}
+
+/* projectMain */
+#projectMainWrapContent{
+    position: relative;
+    display:block;
+    height: 100%;
+}
+.adminInfoContent{
+    width:100%;
+    height: 20%;
+    margin: 0 auto;
+    text-align: center;
+}
+.adminInfo{ 
+    padding-top: 30px; 
+ }
+.adminInfo>div{
+    display: inline-block;
+    vertical-align: middle;
+}
+.tabInfo{
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    padding-top:15%;
+    margin-top:-15%; 
+    margin: 0;
+    padding: 0;
+}
+.tabs{
+    margin: 0 auto;
+    text-align: center;
+    width: 100%; 
+    margin-top:-40px;
+    border-bottom:rgb(204, 204, 204) 1px solid;         
+}
+.tabs button{
+    background-color: rgb(204, 204, 204);
+    padding: 14px 16px;
+    font-size: 14px;
+    border: none;
+}
+.tabsContent{
+    position: absolute;
+    text-align: center; 
+    width: 100%;  
+    height: 99%;
+    bottom: 0;
+}
+embed{
+    width: 100%;
+    height: 100%;
+}
+
+/* projectList */
+#projectListWrapContent{
+    top: 0;
+    margin: 0 auto;
+}
+.project{
+    margin: 20px;
+}
+.boxHeader>h3{
+    padding-left:60px; 
+}
+.exsistProjectBox,.createProjectBox{
+    display: inline-block;
+    vertical-align: top;
+}
+.projectName>strong{
+    font-size: 35px;
+}
+.exsistProjectBox{
+    width:200px;
+    height: 90px;
+    border-radius: 5px;
+    background-color: dimgray;
+    color: aliceblue;
+}
+.projectSetting{
+    float: right;
+    background-color:  dimgray;
+    border: none;
+    color: aliceblue;
+}
+.createProjectBox{
+    width:200px;
+    height: 90px;
+    border-radius: 5px;
+    background-color: rgb(170, 170, 170);
+    color: aliceblue;
+}
+.createProjectBox .projectName{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* teamList */
+#teamListWrapContent{
+    width: 100%;
+    height: 100%;
+}
+#teamListWrapContent>.box{
+   vertical-align: top;
+   display: inline-block;
+   padding:15px;
+}
+.content div.downBtn{
+    padding:0;
+}
+.boxBody{
+    font-size: 14px;
+}
+#searchAddMemberBox{
+    text-align: center;
+    width: 300px;
+    float: left;
+}
+#searchAddMemberBox>section{
+    margin:50px 0;
+}
+#memberSearch{
+    border: none;
+    background-color: #47545793;
+    color:white;
+    height: 30px;
+    width: 200px;
+    margin: 5px 0;
+}
+.addBtn{
+    background-color: rgb(204, 204, 204);
+    padding: 14px 16px;
+    border: none;
+    margin: 5px 0;
+    width:200px;
+}
+#teamListBox{
+    width:70%;
+    margin-top: 50px;
+}
+
+.teamBtn{
+    float:right;
+    padding: 0;
+    border: none;
+    background: none;
+}
+.members{
+    display:none;
+}
+.modalContent button.permissionBtn, button#removeBtn{
+    background-color: #fefefe;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    border: none;
+}
+.modalContent button.permissionBtn:hover, button#removeBtn:hover{
+    background-color: #bebebe;
+}
+.content div.memberBtns{
+    float:right;
+    padding: 0;
+}
+.memberBtn{
+    border-radius: 10px;
+    background-color: rgb(204, 204, 204);
+    border: none;
+}
+@media screen and ( max-width: 850px){
+    #searchAddMemberBox{
+        visibility: hidden;
+    }
+    #teamListBox{
+        width: 100%;
+    }
+    
+}

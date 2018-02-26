@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <link rel="stylesheet" type="text/css" href="soyoung.css">
+</head>
+
+<body>
+    <div id="teamListWrapContent">
+        <div class="box" id="searchAddMemberBox">
+            <!-- 멤버 검색 -->
+            <section class="content">
+                <div class="boxHeader">
+                    <h3>Member Search</h3>
+                </div>
+                <hr>
+                <div class="boxBody">
+                    <input type="text" name="memberSearch" id="memberSearch" placeholder="  Search Member..">
+                </div>
+            </section>
+
+            <!-- 멤버 추가 -->
+            <section class="content">
+                <div class="boxHeader">
+                    <h3>Member Add</h3>
+                </div>
+                <hr>
+                <div class="boxBody">
+                    <!-- 한 명의 멤버 추가할 경우 -->
+                    <button class="addBtn" id="addMemberBtn" onclick="addMemberClick()">Add by Name or Email</button>
+                    <!--  한 명의 멤버 추가버튼을 누를 때 모달창 -->
+                    <div class="modal" id="addMemberModal">
+                        <div class="modalContent">
+                            <div>
+                                <span class="close" onclick="modalClose()">&times;</span>
+                            </div>
+                            Add Member
+                            <hr>
+                            Team:
+                            <select>
+                                    <option value="Team Name">Team Name</option>
+                                    <option value="Team Name">Team Name</option>
+                                    <option value="Team Name">Team Name</option>
+                                    <option value="Team Name">Team Name</option>
+                                  </select>
+                            <br>
+                            <br>
+                            Email or UserName:
+                            <input type="text" id="memberTxt" name="memberTxt">
+                            <br>
+                            <br> Search for a person in Trello by name or email address, or enter an email address to invite
+                            someone new.
+                            <br>
+                            <br>
+                            <button>Add To Team..</button>
+                        </div>
+                    </div>
+                    <!-- 여러 명 멤버 추가할 경우 -->
+                    <button class="addBtn" id="addMemberschBtn" onclick="addMembersClick()">Bulk Add Members</button>
+                    <!--  여러 명 멤버 추가버튼을 누를 때 모달창 -->
+                    <div class="modal" id="addMembersModal">
+                        <div class="modalContent">
+                            <div>
+                                <span class="close" onclick="modalClose()">&times;</span>
+                            </div>
+                            Add Members      
+                            <hr>
+                            Team:
+                            <select>
+                                    <option value="Team Name">Team Name</option>
+                                    <option value="Team Name">Team Name</option>
+                                    <option value="Team Name">Team Name</option>
+                                    <option value="Team Name">Team Name</option>
+                                  </select>
+                            <br><br>
+                            <label>Emails or Usernames:</label>
+                            <br>
+                            <textarea name="membersTxt" id="membersTxt" cols="30" rows="10" placeholder="e.g. taco@gmail.com; chorize@gmail.com pede@gmail.com; @relly; @sunny"></textarea>
+                            <br>
+                            <br>
+                            <button>Add To Team..</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <!-- 팀 목록 -->
+        <div class="box" id="teamListBox">
+            <section class="content">
+                <div class="boxHeader">
+                    <h3>Team List</h3>
+                </div>
+                <hr>
+                <hr>
+                <div class="ListBoxBody">
+                    <table width="100%">
+                        <!-- 한 팀의 정보 -->
+                        <tr class="team">
+                            <td>
+                                <div>
+                                    <i class="fas fa-users"></i>&nbsp;Team Name
+                                    <!-- 한 팀의 상세정보 버튼:멤버 목록 -->
+                                    <button class="teamBtn" onclick="membersClick(0)">
+                                        <i class="fas fa-angle-down"></i>
+                                    </button>
+                                    <!-- 멤버 목록 모달창 -->
+                                    <div class="members" id="membersContent">
+                                        <section class="content">
+                                            <div class="boxHeader">
+                                                <h3>Member List</h3>
+                                            </div>
+                                            <hr>
+                                            <hr>
+                                            <div class="ListBoxBody">
+                                                <table width="100%">
+                                                    <tr class="member">
+                                                        <td>
+                                                            <div>
+                                                                <i class="fas fa-user"></i>&nbsp;Member Name
+                                                                <!-- 한 멤버의 설정버튼 -->
+                                                                <div class="memberBtns">
+                                                                    <!-- 한 멤버의 활동이력 보기 버튼 -->
+                                                                    <button class="memberBtn">Activity</button>
+                                                                    <!-- 한 멤버의 권한 설정 버튼 -->
+                                                                    <button class="memberBtn" onclick="permissionMemberClick()">Permissions</button>
+                                                                    <!-- 한 멤버의 권한 설정 모달창 -->
+                                                                    <div class="modal" id="permissionModal">
+                                                                        <div class="modalContent">
+                                                                            <div>
+                                                                                <span class="close" onclick="modalClose()">&times;</span>
+                                                                            </div>
+                                                                            Change Permissions
+                                                                            <hr>
+                                                                            <div>
+                                                                            <button class="permissionBtn" id="adminPermissionBtn">
+                                                                                <h2>Admin</h2><br><br>
+                                                                                Can view, create and edit team boards, and
+                                                                                change settings for the team.<br><br>
+                                                                            </button>
+                                                                            <button class="permissionBtn" id="nomalPermissionBtn"><br><br>
+                                                                                <h2>Nomal</h2><br><br>
+                                                                                Can view, create and edit team boards, but
+                                                                                not change settings.<br><br>
+                                                                            </button>
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- 한 멤버의 삭제 설정 버튼 -->
+                                                                    <button class="memberBtn" onclick="removeMemberClick()">Remove..</button>
+                                                                    <!-- 한 멤버의 삭제 설정 모달창 -->
+                                                                    <div class="modal" id="removeModal">
+                                                                        <div class="modalContent">
+                                                                            <div>
+                                                                                <span class="close" onclick="modalClose()">&times;</span>
+                                                                            </div>
+                                                                            Remove Member
+                                                                            <hr>
+                                                                            <div>
+                                                                            <button id="removeBtn"><br><br>
+                                                                                <h2>Remove from team</h2><br><br>
+                                                                                Remove all access to the team. The member
+                                                                                will remain on all their boards in this team.
+                                                                                They will receive a notification.<br><br>
+                                                                            </button>
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <hr>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="member">
+                                                        <td>
+                                                            <div>
+                                                                <i class="fas fa-user"></i>&nbsp;Member Name
+
+                                                                <div class="memberBtns">
+                                                                    <button class="memberBtn">Activity</button>
+                                                                    <button class="memberBtn">Permissions</button>
+                                                                    <button class="memberBtn">Remove..</button>
+                                                                </div>
+
+                                                            </div>
+                                                            <hr>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <!-- 한 팀의 정보 끝 -->
+                        <tr class="team">
+                            <td>
+                                <div>
+                                    <i class="fas fa-users"></i>&nbsp;Team Name
+                                    <button class="teamBtn" onclick="membersClick(1)">
+                                        <i class="fas fa-angle-down"></i>
+                                    </button>
+                                    <div class="members" id="membersContent">
+                                        <section class="content">
+                                            <div class="boxHeader">
+                                                <h3>Member List</h3>
+                                            </div>
+                                            <hr>
+                                            <hr>
+                                            <div class="ListBoxBody">
+                                                <table width="100%">
+                                                    <tr class="member">
+                                                        <td>
+                                                            <div>
+                                                                <i class="fas fa-user"></i>&nbsp;Member Name
+
+                                                                <div class="memberBtns">
+                                                                    <button class="memberBtn">Activity</button>
+                                                                    <button class="memberBtn">Permissions</button>
+                                                                    <button class="memberBtn">Remove..</button>
+                                                                </div>
+
+                                                            </div>
+                                                            <hr>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="member">
+                                                        <td>
+                                                            <div>
+                                                                <i class="fas fa-user"></i>&nbsp;Member Name
+
+                                                                <div class="memberBtns">
+                                                                    <button class="memberBtn">Activity</button>
+                                                                    <button class="memberBtn">Permissions</button>
+                                                                    <button class="memberBtn">Remove..</button>
+                                                                </div>
+
+                                                            </div>
+                                                            <hr>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr class="team">
+                            <td>
+                                <div>
+                                    <i class="fas fa-users"></i>&nbsp;Team Name
+                                    <button class="teamBtn">
+                                        <i class="fas fa-angle-down"></i>
+                                    </button>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr class="team">
+                            <td>
+                                <div>
+                                    <i class="fas fa-users"></i>&nbsp;Team Name
+                                    <button class="teamBtn">
+                                        <i class="fas fa-angle-down"></i>
+                                    </button>
+                                    <div class="members" id="membersContent">
+                                        <section class="content">
+                                            <div class="boxHeader">
+                                                <h3>Member List</h3>
+                                            </div>
+                                            <hr>
+                                            <hr>
+                                            <div class="ListBoxBody">
+                                                <table width="100%">
+                                                    <tr class="member">
+                                                        <td>
+                                                            <div>
+                                                                <i class="fas fa-user"></i>&nbsp;Member Name
+
+                                                                <div class="memberBtns">
+                                                                    <button class="memberBtn">Activity</button>
+                                                                    <button class="memberBtn">Permissions</button>
+                                                                    <button class="memberBtn">Remove..</button>
+                                                                </div>
+
+                                                            </div>
+                                                            <hr>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="member">
+                                                        <td>
+                                                            <div>
+                                                                <i class="fas fa-user"></i>&nbsp;Member Name
+
+                                                                <div class="memberBtns">
+                                                                    <button class="memberBtn">Activity</button>
+                                                                    <button class="memberBtn">Permissions</button>
+                                                                    <button class="memberBtn">Remove..</button>
+                                                                </div>
+
+                                                            </div>
+                                                            <hr>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr class="team">
+                            <td>
+                                <div>
+                                    <i class="fas fa-users"></i>&nbsp;Team Name
+                                    <button class="teamBtn">
+                                        <i class="fas fa-angle-down"></i>
+                                    </button>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
+                <hr>
+            </section>
+        </div>
+    </div>
+</body>
+<script>
+    var num = 0;
+    var modalState = 0;
+
+    function addMemberClick() {
+        var addMemberModal = document.getElementById("addMemberModal");
+        addMemberModal.style.display = "block";
+        modalState = 1;
+    }
+
+    function addMembersClick() {
+        var addMembersModal = document.getElementById("addMembersModal");
+        addMembersModal.style.display = "block";
+        modalState = 1;
+    }
+
+    function permissionMemberClick() {
+        var permissionModal = document.getElementById("permissionModal");
+        permissionModal.style.display = "block";
+        modalState = 1;
+    }
+
+    function removeMemberClick() {
+        var removeModal = document.getElementById("removeModal");
+        removeModal.style.display = "block";
+        modalState = 1;
+    }
+//모달창에서 x를 누르면 창이 닫아지는 함수
+    function modalClose(){
+        console.log("click");
+        var modal = document.getElementsByClassName("modal");
+            for (var i=0; i < modal.length; i++) {
+                console.log("머냐능 왜 안되냐능");
+                console.log(modal[i].style.display);
+                if(modal[i].style.display=="block"){
+                    modal[i].style.display = "none";
+                }  
+             modalState=0;
+        }
+        console.log(modalState);
+    }
+
+//team목록에서 downBtn을 누르면 member목록이 나타나게 하는 함수
+    function membersClick(num) {
+        var members = document.getElementsByClassName("members");
+        if (modalState == 0) {
+            members[num].style.display = "block";
+            modalState = 1;
+            console.log(modalState);
+        } else if (modalState == 1) {
+            members[num].style.display = "none";
+            modalState = 0;
+            console.log(modalState);
+        }
+
+    }
+</script>
+
+</html>

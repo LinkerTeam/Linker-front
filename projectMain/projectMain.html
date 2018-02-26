@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <link rel="stylesheet" type="text/css" href="soyoung.css">
+</head>
+<body>
+    <div id="projectMainWrapContent">
+        <div class="adminInfoContent">
+            <div class="adminInfo">
+                <div class="adminInfoProfile"><i class="fas fa-user-circle fa-3x"></i></div>
+                    <div class="adminInfoName">
+                        <label class="nickName">nickName</label>
+                    </div>
+            </div>
+        </div>
+            <div class="tabInfo">
+                <div class="tabs">
+                    <button class="tablinks" onclick="openInfo(0)">Projects</button>
+                    <button class="tablinks" onclick="openInfo(1)">Teams</button>
+                </div>
+                <div class="tabsContent">
+                    <embed id="boards" class="tabContent" src="projectList.html">
+                    <embed id="Members" class="tabContent" src="teamList.html">
+                </div>
+            </div> 
+        </div>
+    </div>
+</body>
+<script>
+    var tablinks = document.getElementsByClassName('tablinks'); /* 0: boards 1: members */
+    var tabContent = document.getElementsByClassName('tabContent');
+    var btn = document.querySelector('button');
+
+    /* tabsContent 초기화 내용: tablinks[0] */
+    for(var i=0;i<tablinks.length;i++){
+        if(i==0){
+            tabContent[i].style.display="block";
+        }else{
+            tabContent[i].style.display="none";
+        } 
+    }
+
+    /* 탭에 대한 정보를 tabsContent에 출력하는 함수 */
+    function openInfo(num){
+        for(var i=0;i<tablinks.length;i++){
+        if(num==i){
+            tabContent[num].style.display="block";
+        }else{
+            tabContent[i].style.display="none";
+        } 
+    }
+    }
+    
+</script>
+</html>
