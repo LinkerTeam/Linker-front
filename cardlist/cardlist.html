@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Linker Card List</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+   
+</head>
+<style media="screen">
+
+
+ /* html에서 width가  box사이즈를 넘어가는걸  방지하는 css문. */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* 아무의미없음 삭제바람 */
+body{
+    padding: 20px;
+   
+    height: 1000px;
+    overflow-x: scroll;
+  
+}
+
+/*
+overflow: auto;
+overflow의 값을 auto로 설정할 경우 부모요소의 범위를 넘어가는
+자식요소의 부분이 있을 경우 해당 부분을 보이지 않도록 처리하고,
+사용자가 해당 부분을 확인 할수 있도록 스크롤바를 표시.
+*/
+
+#container {
+    width: 100%;
+    overflow: auto;
+}
+
+/*
+붉은색 색상 박스(안쪽에 리스트 추가 텍스트 있음)
+*/
+#add-a-list-btn {
+    background-color: #963C2B;
+    padding: 12px;
+    margin-left: 10px;
+    border-radius: 3px;
+    color: #F5D3CE;
+    display: block;
+    width: 246px;
+ 
+}
+
+/*
+cursor: pointer;
+호버했을때, 커서모양을 손가락 모양으로 변경한다.
+ */
+#add-a-list-btn:hover {
+    cursor: pointer;
+    background-color: #7C3123;
+   
+}
+
+/*
+붉은 색상 박스를 클릭했을때
+카드 메세지 입력 창이 나타남.
+*/
+#save-list-box {
+    background-color: #E2E4E6;
+    margin-left: 10px;
+    padding: 4px;
+    border-radius: 2px;
+    width: 262px;
+    height: 70px;
+     display: none; 
+}
+
+/*
+붉은 박스 클릭 >> 입력창추가 >> 안의 박스
+*/
+#list-input-box {
+    background-color: #D7D9DB;
+    width: 250px;
+    height: 25px;
+    padding: 3px 5px;
+    font-size: 14px;
+    color: #575757;
+
+/*
+박스 안의 글자 색상
+cursor: text;
+커서모양을 텍스트 입력할때 나오는 모양으로 바꾼다.
+box-shadow: inset 0 0 10px rgba(0, 0, 0, .1);
+각자 공부해~
+*/
+    font-family: helvetica;
+    border-radius: 3px;
+    border-style: none;
+    border: 1px solid #AAAAAA;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, .1);
+    cursor: text;
+}
+
+/*
+'저장' 버튼 스타일 지정
+*/
+#save-list-btn {
+    font-family: helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 4px;
+    background-color: #5EB54A;
+    border-style: none;
+    border-radius: 2px;
+    color: white;
+    padding: 7px 8px 8px 8px;
+    box-shadow: 0 1px 2px 0 black;
+    width: 72px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/*
+'취소' 버튼 스타일 지정
+*/
+#cancle-list-btn {
+    font-family: helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 4px;
+    background-color: #5EB54A;
+    border-style: none;
+    border-radius: 2px;
+    color: white;
+    padding: 7px 8px 8px 8px;
+    box-shadow: 0 1px 2px 0 black;
+    width: 72px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* 만들어진 카드리스트에 타이틀값 속성 */
+.text {
+    font-weight: bold;
+    font-size: 14px;
+    color: #646464;
+    width: 220px;
+    padding: 4px 4px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+/* 카드리스트 컨테이너의 속성 카드리스트에 가장큼 폼 */
+.add-card-container {
+    /*add a card... grey box*/
+    background-color: #E2E4E6;
+    margin-left: 10px;
+    border-radius: 3px;
+    height: auto;
+}
+/* 카드의 색상을 지정하고 카드값을 정해준다. 그리고 눌렀을때 변하게해준다. */
+.add-card {
+    /*Add a card... text*/
+    text-decoration: none;
+    display: block;
+    color: #838C91;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+
+/*  카드를 마우스 위로 올렸을떄 나타는 css */
+.add-card:hover {
+    text-decoration: underline;
+    color: #515252;
+    background-color: #CDD2D4;
+}
+
+/* 카드간에 간격과 마진을 줌 */
+.list-title {
+    margin: 5px 5px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    width: 260px;
+    height: auto;
+    cursor: pointer;
+}
+
+.fa-ellipsis-h {
+    padding: 5px 5px;
+    color: #838C91;
+    float: right;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+   
+    font-size: 25px;
+}
+
+.fa-ellipsis-h:hover {
+
+    color: #737475;
+    background: #CDD2D4;
+}
+
+
+</style>
+
+<body id="body" style="width:100%">
+
+  <!-- 카드리스트 시작 -->
+
+  <div id="container">
+    <div id="add-a-list-btn">Add a list...</div>
+    <div id="save-list-box">
+      <input id="list-input-box" placeholder="Add a list..." />
+      <button type="button" id="save-list-btn">저장</button>
+      <button type="button" id="cancle-list-btn">취소</button>
+    </div>
+  </div>
+
+  <!-- 카드리스트 끝 -->
+
+  <script type="text/javascript">
+  // 전체를 감싸는 컨테이너 변수 선언
+  var body=document.getElementById("body");
+  var container = document.getElementById("container");
+  // 붉은 색상 박스 변수 선언
+  var addListBtn = document.getElementById("add-a-list-btn");
+  // 저장 버튼 변수 선언
+  var saveListBtn = document.getElementById("save-list-btn");
+  // 붉은 색상 박스를 클릭했을때 나오는 박스 변수 선언
+  var saveListBox = document.getElementById("save-list-box");
+  // 인풋박스를 변수에 담는 것
+  var listInputBox = document.getElementById("list-input-box");
+  // 카드리스트의 타이틀을 담는 변수를 선언
+  var textValue;
+
+  // 데이터베이스가 존재하지않아서 임시적으로 값을 담을 배열 컨테이너.
+  var data ={
+     lists :[]
+  };
+
+  // 저장버튼을 누르면 기존에 있는 폼을 보이지않게하고 새로운 add-a-list-btn으로 보이게되는 함수정의
+  function addList(){
+      saveListBox.style.display="inline-block";
+      addListBtn.style.display="none";
+  }
+
+  function createList(textValue){
+    //textValue가 null이 아니면 true가 되어 if문을 실행함   
+    if(textValue){
+        //캬드리스트에 가장큰 박스
+        var parentDiv =document.createElement("div");
+        // 카드리스트에 타이틀을 담을 박스
+        var listTitle = document.createElement("div");
+        //카드리스트에 타이틀 박스
+        var title =document.createElement("div");
+        //a태그를 선언하고 dotIcon에 변수에 담음
+        var dotIcon=document.createElement("a");
+        // 사용자가 입력한 타이틀을 담는 변수선언
+        var newTextNode = document.createTextNode(textValue);
+        //
+        var addCardLink=document.createElement("a");
+        //TextNote는 일반적text값을 부여함
+        var addText =document.createTextNode("카드를 추가 하시겠습니까?");
+        var bodywidth = document.getElementsByTagName('body');
+        //데이터를 담을 임시의 변수
+        var lists;
+        //for문을 변수돌릴 변수 선언 ex)자바에서 int i 처럼
+        var x;
+        //??안씀
+        var y;
+
+        data.lists.push({
+        
+            title : textValue,
+       
+            // 카드리스트 제목이 여러개이듯 카드또한 여러개를 넣어야해서 배열로 선언한다.
+            cards : []
+        });
+        // 이해가 안되서 필주씨에게 물어보는걸로.. 객체의 MAP을 이벤트함.
+        lists = data.lists.map(function (event){
+            return event;
+        });
+        
+        //새로운 태그를 만드는 자바스크립트문 ex) <div><div><a></a></div></div> 이런식 스크립트로 짜놓은것
+        for(x=0; x < lists.length; x++){
+             parentDiv.setAttribute("class","add-card-container");
+             parentDiv.setAttribute("id","list-container"+x);
+             dotIcon.setAttribute("class","fas fa-ellipsis-h");
+             dotIcon.setAttribute("id","del"+x);
+         
+             //contenteditable은 고정값이아니라 클릭시 값을 변경할수있게하는 기능 true로 속성값을 변경시에
+             title.setAttribute("contenteditable","true");
+             title.setAttribute("class","text");
+             title.appendChild(newTextNode);
+             listTitle.appendChild(dotIcon);
+             listTitle.setAttribute("class", "list-title");
+             listTitle.appendChild(title);
+             addCardLink.setAttribute("href","#");
+             addCardLink.setAttribute("class","add-card");
+             addCardLink.setAttribute("id","add"+x);
+             addCardLink.appendChild(addText);
+            //  parentDiv.style.cssFloat="left";
+             parentDiv.style.display="inline-block";
+             parentDiv.style.height="100%";
+             parentDiv.appendChild(listTitle);
+             parentDiv.appendChild(addCardLink);
+             container.insertBefore(parentDiv,addListBtn);
+             addListBtn.style.display="inline-block";
+             saveListBox.style.display="none";
+             listInputBox.value="";
+             
+             document.getElementById("add"+x).addEventListener('click',addCards(x));
+             
+            
+        }
+
+
+      }
+  }
+  var count=0;
+window.addEventListener("load", function () {
+ 
+ //add버튼을 클릭시 addlistbtn은 사라지고 savelistbox는 나타나는 함수
+   addListBtn.addEventListener("click",function(){
+      addList();
+  });
+    saveListBtn.addEventListener("click",function(){
+      // body의 스타일의 width 값을 가져와서 숫자를 paseInt로 숫자로 변경후 값을 +200 더한후
+      //다시 그 값을 String으로 변환후 style로 값을 재지정해서 body의 값이 카드리스트가 하나생길때마다
+      //body width가 200px씩 증가해서 무한 스크롤을 하게한다.
+      //추후 나중에 메인이랑 합칠시 dIv로 만감쌀테니 그러면 스크롤바가 반만 생기니 그떄는 body의 width도 같이 늘려줘야한다.
+      if(count>4){
+        var containerWidth = body.style.width;
+        var subget = containerWidth.substring(0,4);
+        var test = parseInt(subget)+15;
+        console.log(test);
+        containerWidth ='width :'+ test + '%';       
+        console.log(containerWidth);
+        body.setAttribute("style", containerWidth);
+      }
+       count++;
+        //타이틀을 받아온 값을 textValue에 담는 과정
+        textValue = listInputBox.value;
+        //정의된 함수를 호출하고 매개변수로 타이틀을 넣어준다.
+        createList(textValue);
+    });
+
+
+
+});
+
+
+
+
+
+
+  </script>
+
+  
+</body>
+
+</html>
