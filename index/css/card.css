@@ -1,0 +1,147 @@
+﻿@charset "UTF-8";
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+.popupCard {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    width: 756px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    background-color: rgb(237, 239, 240);
+}
+
+    .popupCard * {
+        margin: 5px;
+    }
+
+    .popupCard section {
+        width: 500px;
+    }
+
+    .popupCard:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+
+    .popupCard section {
+        float: left;
+    }
+
+    .popupCard aside {
+        width: 210px;
+        float: right;
+        margin-top: 20px;
+    }
+
+    .popupCard ul {
+        list-style: none;
+    }
+
+    .popupCard aside ul, .popupCard aside ul li {
+        margin-top: 2px;
+    }
+
+        .popupCard aside ul li div {
+            text-align: left;
+            width: 168px;
+            background-color: rgb(226, 228, 230);
+            padding: 6px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+            .popupCard aside ul li div:hover, .file:hover, .popup-profile:hover, .comment-attachment:hover {
+                background-color: rgb(204, 205, 206);
+            }
+
+            .popupCard aside ul li div:active {
+                background-color: rgb(159, 161, 161);
+                color: white;
+            }
+
+    .popupCard a {
+        color: gray;
+        text-decoration: none;
+    }
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.popup-content {
+    margin-left: 30px;
+    width: auto;
+}
+
+.fileMime {
+    background-color: rgb(226, 228, 230);
+    ;
+    text-align: center;
+    line-height: 80px;
+    width: 130px;
+    height: 80px;
+    border-radius: 10px;
+    /* float: left; */
+}
+
+.fileList {
+    display: block;
+}
+
+.fileMime, .fileInfo {
+    display: inline-block;
+}
+
+.popup-comment {
+    display: inline-block;
+}
+
+.popup-profile {
+    background-color: rgb(226, 228, 230);
+    border-radius: 3em;
+    padding: 7px;
+    cursor: default;
+    vertical-align: top;
+}
+
+.popup-comment-res {
+    background-color: white;
+    margin-top: 0px;
+    padding-right: 0px;
+    text-align: right;
+}
+
+.reply {
+    overflow: visible;
+    background-image: none;
+    border: none;
+    min-height: 50px;
+    margin-bottom: 0px;
+    resize: none;
+}
+
+.comment-attachment {
+    margin-right: 0px;
+    margin-bottom: 0px;
+}

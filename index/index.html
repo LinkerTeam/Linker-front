@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="Ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
+    <title>Linker HTML 페이지 목록</title>
+
+    <style>
+        /* 초기화 */
+        * {margin: 0; padding: 0;}
+        a {font-size:14px;}
+        
+        /* 문서 제목 */
+        h1 {font-size: 20px; height: 60px; line-height: 60px; background: #ddd; color: #222; font-weight: normal; text-align:center;}
+
+        /* HTML 목록 */
+        .wrapper {padding: 0 20px; margin-top:20px;}
+        .list {width:100%; border-collapse:collapse;}
+
+        .list tr {font-size:14px;}
+        .list tr th {font-weight:normal; background:#333; color:#eee; border:1px solid #ccc; border-bottom:1px solid #ccc; padding:13px 0;}
+        .list tr th.login {background: #7097e0}
+        .list tr th.main {background:#3c5c97;}
+        .list tr th.project {background:#213355;}
+
+        .list tr td {text-align:center; border:1px solid #ccc; border-bottom:1px solid #ccc; padding:13px 0;}
+        .list tr td.url {text-align:left; padding-left: 10px;}
+    </style>
+</head>
+<body>
+    <h1>Linker HTML 페이지 목록</h1>
+
+    <div class="wrapper">
+        <table class="list">
+            <colgroup>
+                <col width="10%" />
+                <col width="14%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="15%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">1 Depth</th>
+                    <th scope="col">2 Depth</th>
+                    <th scope="col">3 Depth</th>
+                    <th scope="col">4 Depth</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">완료일</th>
+                    <th scope="col">담당자</th>
+                    <th scope="col">Comment</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <!-- 로그인/회원가입 -->
+                <tr>
+                    <th class="login" scope="col" rowspan="2">로그인/회원가입</th>
+                    <td>로그인/회원가입</td>
+                    <td></td>
+                    <td></td>
+                    <td class="url"><a href="./html/login.html" target="_blank">로그인/회원가입</a></td>
+                    <td></td>
+                    <td>최한성, 송성은</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>회원정보 수정</td>
+                    <td></td>
+                    <td></td>
+                    <td class="url"><a href="#" target="_blank">회원정보 수정</a></td>
+                    <td></td>
+                    <td>최한성, 송성은</td>
+                    <td></td>
+                </tr>
+               
+                <!-- 메인 -->
+                <tr>
+                    <th class="main">메인</th>
+                    <td>헤더 / 카테고리 / 설정메뉴</td>
+                    <td></td>
+                    <td></td>
+                    <td class="url"><a href="./html/Main.html" target="_blank">메인</a></td>
+                    <td></td>
+                    <td>오윤주, 최수정</td>
+                    <td>설정 탭 [이력/달성/가리기/설정]</td>
+                </tr>
+                <tr>
+                    <th class="project" scope="col" rowspan="5">프로젝트</th>
+                    <td>프로젝트 리스트</td>
+                    <td></td>
+                    <td></td>
+                    <td class="url"><a href="#" target="_blank">프로젝트 리스트</a></td>
+                    <td></td>
+                    <td>이필주, 김소영</td>
+                    <td></td>
+                </tr>
+                <!-- 프로젝트 -->
+                <tr>
+                    <td rowspan="2">프로젝트</td>
+                    <td>카드 리스트</td>
+                    <td></td>
+                    <td class="url"><a href="./html/cardlist.html" target="_blank">카드 리스트</a></td>
+                    <td></td>
+                    <td>최한성, 송성은</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>카드 리스트</td>
+                    <td>카드</td>
+                    <td class="url"><a href="./html/card.html" target="_blank">카드 팝업</a></td>
+                    <td></td>
+                    <td>이필주, 김소영</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">팀</td>
+                    <td>팀 목록</td>
+                    <td></td>
+                    <td class="url"><a href="#" target="_blank">팀 목록</a></td>
+                    <td></td>
+                    <td>이필주, 김소영</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>팀 정보 수정</td>
+                    <td></td>
+                    <td class="url"><a href="#" target="_blank">팀 정보 수정</a></td>
+                    <td></td>
+                    <td>이필주, 김소영</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
