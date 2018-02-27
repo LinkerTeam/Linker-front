@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Linker Card List</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link href="../css/common.css" type=text/css rel=stylesheet />
+  <link href="../css/cardlist.css" type=text/css rel=stylesheet />
+    <link href="../css/reset.css" type=text/css rel=stylesheet />
+
+</head>
+
+<body id="body" style="width:100%">
+
+  <!-- 카드리스트 시작 -->
+
+    <!--프로젝트 이름, 오른쪽 메뉴 버튼 추가함.-->
+    <!--<div class="content-header">
+        <div class="content-header-projectName">프로젝트 이름</div>
+        <div class="content-header-menu"><a href="#">show menu..</a></div>
+    </div>-->
+    <!--/프로젝트 이름, 오른쪽 메뉴 버튼 추가함.-->
+
+
+  <div id="cardlistContainer">
+    <div id="add-a-list-btn">Add a list...</div>
+    <div id="save-list-box">
+      <input id="list-input-box" placeholder="Add a list..." />
+      <button type="button" id="save-list-btn">저장</button>
+      <button type="button" id="cancle-list-btn">취소</button>
+    </div>
+  </div>
+  <!-- 카드리스트 끝 -->
+
+  <script type="text/javascript">
+  // 전체를 감싸는 컨테이너 변수 선언
+  var body=document.getElementById("body");
+  var cardlistContaine = document.getElementById("cardlistContainer");
+  // 붉은 색상 박스 변수 선언
+  var addListBtn = document.getElementById("add-a-list-btn");
+  // 저장 버튼 변수 선언
+  var saveListBtn = document.getElementById("save-list-btn");
+  // 붉은 색상 박스를 클릭했을때 나오는 박스 변수 선언
+  var saveListBox = document.getElementById("save-list-box");
+  // 인풋박스를 변수에 담는 것
+  var listInputBox = document.getElementById("list-input-box");
+  // 카드리스트의 타이틀을 담는 변수를 선언
+  var textValue;
+
+  // 데이터베이스가 존재하지않아서 임시적으로 값을 담을 배열 컨테이너.
+  var data ={
+     lists :[]
+  };
+
+  // 저장버튼을 누르면 기존에 있는 폼을 보이지않게하고 새로운 add-a-list-btn으로 보이게되는 함수정의
+  function addList(){
+      saveListBox.style.display="inline-block";
+      addListBtn.style.display="none";
+  }
+
+  function createList(textValue){
+    //textValue가 null이 아니면 true가 되어 if문을 실행함   
+    if(textValue){
+        //캬드리스트에 가장큰 박스
+        var parentDiv =document.createElement("div");
+        // 카드리스트에 타이틀을 담을 박스
+        var listTitle = document.createElement("div");
+        //카드리스트에 타이틀 박스
+        var title =document.createElement("div");
+        //a태그를 선언하고 dotIcon에 변수에 담음
+        var dotIcon=document.createElement("a");
+        // 사용자가 입력한 타이틀을 담는 변수선언
+        var newTextNode = document.createTextNode(textValue);
+        //
+        var addCardLink=document.createElement("a");
+        //TextNote는 일반적text값을 부여함
+        var addText =document.createTextNode("카드를 추가 하시겠습니까?");
+        var bodywidth = document.getElementsByTagName('body');
+        //데이터를 담을 임시의 변수
+        var lists;
+        //for문을 변수돌릴 변수 선언 ex)자바에서 int i 처럼
+        var x;
+        //??안씀
+        var y;
+
+        data.lists.push({
+        
+            title : textValue,
+       
+            // 카드리스트 제목이 여러개이듯 카드또한 여러개를 넣어야해서 배열로 선언한다.
+            cards : []
+        });
+        // 이해가 안되서 필주씨에게 물어보는걸로.. 객체의 MAP을 이벤트함.
+        lists = data.lists.map(function (event){
+            return event;
+        });
+        
+        //새로운 태그를 만드는 자바스크립트문 ex) <div><div><a></a></div></div> 이런식 스크립트로 짜놓은것
+        for(x=0; x < lists.length; x++){
+             parentDiv.setAttribute("class","add-card-cardlistContainer");
+             parentDiv.setAttribute("id","list-cardlistContainer"+x);
+             dotIcon.setAttribute("class","fas fa-ellipsis-h");
+             dotIcon.setAttribute("id","del"+x);
+         
+             //contenteditable은 고정값이아니라 클릭시 값을 변경할수있게하는 기능 true로 속성값을 변경시에
+             title.setAttribute("contenteditable","true");
+             title.setAttribute("class","text");
+             title.appendChild(newTextNode);
+             listTitle.appendChild(dotIcon);
+             listTitle.setAttribute("class", "list-title");
+             listTitle.appendChild(title);
+             addCardLink.setAttribute("href","#");
+             addCardLink.setAttribute("class","add-card");
+             addCardLink.setAttribute("id","add"+x);
+             addCardLink.appendChild(addText);
+            //  parentDiv.style.cssFloat="left";
+             parentDiv.style.display="inline-block";
+             parentDiv.style.height="100%";
+             parentDiv.appendChild(listTitle);
+             parentDiv.appendChild(addCardLink);
+             cardlistContainer.insertBefore(parentDiv,addListBtn);
+             addListBtn.style.display="inline-block";
+             saveListBox.style.display="none";
+             listInputBox.value="";
+             
+             document.getElementById("add"+x).addEventListener('click',addCards(x));
+             
+            
+        }
+
+
+      }
+  }
+  var count=0;
+window.addEventListener("load", function () {
+ 
+ //add버튼을 클릭시 addlistbtn은 사라지고 savelistbox는 나타나는 함수
+   addListBtn.addEventListener("click",function(){
+      addList();
+  });
+    saveListBtn.addEventListener("click",function(){
+      // body의 스타일의 width 값을 가져와서 숫자를 paseInt로 숫자로 변경후 값을 +200 더한후
+      //다시 그 값을 String으로 변환후 style로 값을 재지정해서 body의 값이 카드리스트가 하나생길때마다
+      //body width가 200px씩 증가해서 무한 스크롤을 하게한다.
+      //추후 나중에 메인이랑 합칠시 dIv로 만감쌀테니 그러면 스크롤바가 반만 생기니 그떄는 body의 width도 같이 늘려줘야한다.
+      if(count>4){
+        var cardlistContainerWidth = body.style.width;
+        var subget = cardlistContainerWidth.substring(0,4);
+        var test = parseInt(subget)+15;
+        console.log(test);
+        cardlistContainerWidth ='width :'+ test + '%';       
+        console.log(cardlistContainerWidth);
+        body.setAttribute("style", cardlistContainerWidth);
+      }
+       count++;
+        //타이틀을 받아온 값을 textValue에 담는 과정
+        textValue = listInputBox.value;
+        //정의된 함수를 호출하고 매개변수로 타이틀을 넣어준다.
+        createList(textValue);
+    });
+
+
+
+});
+
+
+
+
+
+
+  </script>
+
+  
+</body>
+
+</html>

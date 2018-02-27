@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/projectMain.css">
+</head>
+
+<body>
+    <div id="projectListWrapContent">
+        <section class="content">
+            <div class="box">
+                <div class="boxHeader">
+                    <h3>Project List</h3>
+                </div>
+                <hr>
+                <hr>
+                <div class="boxBody">
+                    <!-- 한 팀에서 만든 프로젝트들 -->
+                    <table width="100%">
+                        <tr class="project">
+                            <td>
+                                <div>
+                                    <i class="fas fa-users"></i>&nbsp;Team Name
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="projectBox">
+                                <!-- 존재하는 프로젝트 -->
+                                <div class="exsistProjectBox">
+                                    <span class="projectName">project Name</span>
+                                    <!-- 존재하는 프로젝트의 메뉴버튼 -->
+                                    <button class="projectSetting" onclick="exsistProjectSettingClick()">&#9776;</button>
+                                </div>
+                                <!-- 달성 또는 숨기기 기능이 있는 모달창 -->
+                                <div class="modal" id="exsistProjectModal">
+                                    <div class="modalContent">
+                                        <div>
+                                            <div class="close" onclick="close()">&times;</div>
+                                        </div>
+                                        <br>
+                                        <button>Achive</button>
+                                        <button>Hide</button>
+                                    </div>
+                                </div>
+                                <!-- 생서할 프로젝트 버튼 -->
+                                <div class="createProjectBox" onclick="createProjectBtnClick()">
+                                    <div class="projectName">create New Project...
+                                        <br>
+                                        <strong>+</strong>
+                                    </div>
+                                </div>
+                                <!-- 생성할 프로젝트 제목입력할 모달창 -->
+                                <div class="modal" id="createProjectModal">
+                                    <div class="modalContent">
+                                        <span>
+                                            Create Project
+                                        </span>
+                                        <span class="close" onclick="close()">&times;</span>
+                                        <hr>
+                                        <label>Title</label>
+                                        <input type="text" name="projectTitleTxt" id="projectTitleTxt">
+                                        <br>
+                                        <br>
+                                        <button>Create</button>
+                                    </div>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                         <!-- 한 팀에서 만든 프로젝트들 끝 -->
+                        <tr class="project">
+                            <td>
+                                <div>
+                                    <i class="fas fa-users"></i>&nbsp;Team Name
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="projectBox">
+                                <div class="exsistProjectBox">
+                                    <span class="projectName">project Name</span>
+                                    <button class="projectSetting" onclick="exsistProjectSettingClick()">&#9776;</button>
+                                </div>
+                                <div class="modal" id="exsistProjectModal">
+                                    <div class="modalContent">
+                                        <div>
+                                            <div class="close" onclick="close()">&times;</div>
+                                        </div>
+                                        <br>
+                                        <button>Achive</button>
+                                        <button>Hide</button>
+                                    </div>
+                                </div>
+                                <div class="createProjectBox" onclick="createProjectBtnClick()">
+                                    <div class="projectName">create New Project...
+                                        <br>
+                                        <strong>+</strong>
+                                    </div>
+                                </div>
+                                <div class="modal" id="createProjectModal">
+                                    <div class="modalContent">
+                                        <span>
+                                            Create Project
+                                        </span>
+                                        <span class="close" onclick="close()">&times;</span>
+                                        <hr>
+                                        <label>Title</label>
+                                        <input type="text" name="projectTitleTxt" id="projectTitleTxt">
+                                        <br>
+                                        <br>
+                                        <button>Create</button>
+                                    </div>
+                                </div>
+                                <hr>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script>
+    var exsistProjectModal = document.getElementById("exsistProjectModal");
+    var createProjectModal = document.getElementById("createProjectModal");
+    var close = document.getElementsByClassName("close");
+    var modalState = 0;
+    // 새로운 프로젝트 생성 버튼을 누를 경우 모달창 보이기 기능
+    function createProjectBtnClick() {
+        createProjectModal.style.display = "block";
+        modalState = 1;
+        console.log(modalState);
+    }
+    // 존재하는 프로젝트 메뉴 버튼을 누를 경우 모달창 보이기 기능
+    function exsistProjectSettingClick() {
+        exsistProjectModal.style.display = "block";
+        modalState = 1;
+        console.log(modalState);
+    }
+    // 존재하는 프로젝트 모달창 x표를 누르면 모달창 닫기 기능
+    close[0].onclick = function close0() {
+        exsistProjectModal.style.display = "none";
+        console.log("0");
+        modalState = 0;
+    }
+    // 생성할 프로젝트 모달창 x표를 누르면 모달창 닫기 기능    
+    close[1].onclick = function close1() {
+        createProjectModal.style.display = "none";
+        console.log("1");
+        modalState = 0;
+
+    }
+</script>
+
+</html>

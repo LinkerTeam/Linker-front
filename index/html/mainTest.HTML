@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script> <!--jquery연결-->
+    <!--CSS파일 연결-->
+    <link href="../css/reset.css" type=text/css rel=stylesheet />
+    <link href="../css/common.css" type=text/css rel=stylesheet />
+    <link href="../css/main.css" type=text/css rel=stylesheet />
+    <link href="../css/cardlist.css" type=text/css rel=stylesheet />
+
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" />
+    <title>Linker</title>
+    <style>
+        @import url(https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css);
+    </style>
+</head>
+
+<body>
+    <!--header ~ footer까지 감싼다-->
+    <div id="wrap">
+
+
+        <!--header-->
+        <header id="header">
+            <!--로고부분-->
+            <a href="#" class="logo-background">
+                <span class="logo-full"><img src="../image/logo.png" width="100" /></span>
+                <span class="logo-mini"><img src="../image/logo_mini.png" width="15" /></span>
+            </a>
+            <!--왼쪽메뉴 단추-->
+            <span class="ltMenu-button" style="cursor:pointer" onclick="openNav()">&#9776;</span>
+            <!--오른쪽메뉴 설정단추-->
+            <span class="rtMenu-button" style="cursor:pointer" onclick="openAside()">
+                <img src="../image/icon_gear.png" width="23" />
+            </span>
+            <!--오른쪽메뉴 프로필단추-->
+            <!--<span class="rtMenu-profile" style="cursor:pointer" onclick="openProfileSetting()">
+                <img src="../image/profile.png" alt="프로필 사진" />
+            </span>-->
+            <span class="riMenu-dropdown">
+                <span class="rtMenu-profile" onclick="openProfileSetting()"><img src="../image/profile.png" class="rtMenuProfileImg" alt="프로필 사진" /></span>
+                <div class="riMenu-dropdown-menu" id="riMenu-dropdown">
+                    <a href="#">회원정보수정</a>
+                    <a href="#">로그아웃</a>
+                </div>
+            </span>
+
+
+            <!--헤더 검색창-->
+            <div class="header-search">
+                <form>
+                    <input type="text" id="search" placeholder="Search" />
+                    <button type="submit"><span><i class="fas fa-search"></i></span></button>
+                </form>
+            </div>
+        </header>
+
+
+        <!--container-->
+        <div class="container">
+            <div class="mainContainer">
+                <div class="mainContent">
+
+                    <!--왼쪽 메뉴(확장메뉴, 축소메뉴)-->
+                    <!--확장 메뉴(글자)-->
+                    <nav class="mainNav">
+                        <!--확장메뉴 | 상단 프로필영역-->
+                        <div class="profile-area">
+                            <a href="#" class="profile-img-area">
+                                <img src="../image/profile.png" class="profile-img" />
+                            </a>
+                            <div class="profile-nickname-area">
+                                <div class="profile-nickname">Holiday</div>
+                            </div>
+                        </div>
+                        <!--확장메뉴 | 하단 메뉴영역-->
+                        <ul class="mainNav-menu">
+                            <li class="mainNav-menu-header">Main navigation</li>
+                            <li><a href="#">Project</a></li>
+                            <li><a href="#">ERD</a></li>
+                            <li><a href="#">CodeLauncher</a></li>
+                            <li><a href="#">Chat</a></li>
+                            <li><a href="#">Postman</a></li>
+                        </ul>
+                    </nav>
+
+                    <!--축소 메뉴(아이콘)-->
+                    <nav class="iconBar">
+                        <a href="#"><img src="../image/profile.png" class="profile-img" /></a>
+                        <!--마우스 오버시 아이콘 색변경 되도록-->
+                        <a href="#" onmouseover="this.childNodes[0].src = 'https://s5.postimg.org/u765gerlj/icon_project_A.png'" onmouseout="    this.childNodes[0].src = 'https://s5.postimg.org/wbqihhlif/icon_project.png'"><img src="https://s5.postimg.org/wbqihhlif/icon_project.png" width="30" border="0" /><span class="icon-menuName">Project</span></a>
+                        <a href="#" onmouseover="this.childNodes[0].src = 'https://s5.postimg.org/beuacuicn/icon_erd_A.png'" onmouseout="    this.childNodes[0].src = 'https://s5.postimg.org/6sy64hp3r/icon_erd.png'"><img src="https://s5.postimg.org/6sy64hp3r/icon_erd.png" width="30" border="0" /><span class="icon-menuName">ERD</span></a>
+                        <a href="#" onmouseover="this.childNodes[0].src = 'https://s5.postimg.org/a12ngyix3/icon_code_A.png'" onmouseout="    this.childNodes[0].src = 'https://s5.postimg.org/8m12s8a47/icon_code.png'"><img src="https://s5.postimg.org/8m12s8a47/icon_code.png" width="30" border="0" /><span class="icon-menuName">CodeLauncher</span></a>
+                        <a href="#" onmouseover="this.childNodes[0].src = 'https://s5.postimg.org/aqlftbyw7/icon_chat_A.png'" onmouseout="    this.childNodes[0].src = 'https://s5.postimg.org/pmjz0x2l3/icon_chat.png'"><img src="https://s5.postimg.org/pmjz0x2l3/icon_chat.png" width="30" border="0" /><span class="icon-menuName">Chat</span></a>
+                        <a href="#" onmouseover="this.childNodes[0].src = 'https://s5.postimg.org/b3ctziwlj/icon_post_A.png'" onmouseout="    this.childNodes[0].src = 'https://s5.postimg.org/4pnqw9jzr/icon_post.png'"><img src="https://s5.postimg.org/4pnqw9jzr/icon_post.png" width="30" border="0" /><span class="icon-menuName">Postman</span></a>
+                    </nav>
+
+                    <!--본문-->
+                    <div class="content show">
+                        <!-- Test code -->
+                        <div class="card-list-wrap">
+                            <!--<ul class="card-list">
+                                <!--<li>카드 1</li>
+                                    <li>카드 2</li>
+                                    <li>카드 3</li>
+                                    <li>카드 4</li>
+                                    <li>카드 5</li>
+                                    <li>카드 6</li>
+                                    <li>카드 7</li>-->
+
+                            <!-- 카드리스트 시작 -->
+                            <div class="content-header">
+                                <div class="content-header-projectName">프로젝트 이름</div>
+                                <div class="content-header-menu"><a href="#">show menu..</a></div>
+                            </div>
+
+                            <div id="cardlistContainer">
+                                <div id="add-a-list-btn">Add a list...</div>
+                                <div id="save-list-box">
+                                    <input id="list-input-box" placeholder="Add a list..." />
+                                    <button type="button" id="save-list-btn">저장</button>
+                                    <button type="button" id="cancle-list-btn">취소</button>
+                                </div>
+                            </div>
+                            <!-- 카드리스트 끝 -->
+
+
+                            <!--</ul>-->
+                        </div>
+                        </ul>
+                    </div>
+                        <!-- /Test code -->
+                    </div>
+
+                    <!-- 오른쪽 메뉴 -->
+                    <!-- .mainAside-open | 열림 상태 -->
+                    <aside id="mainAside" class="mainAside">
+                        <div class="nav-tabs-wrap">
+                            <ul class="nav-tabs">
+                                <!-- .active | 탭 메뉴 활성화 상태 -->
+                                <!-- Tab1 | 이력목록 -->
+                                <li>
+                                    <div class="nav-tab-btn"><a href="#">menu1</a></div>
+                                    <div class="nav-tab-content">
+                                        <div class="tab-content-box">
+                                            <ul class="pic-list">
+                                                <li>
+                                                    <!-- 작성자 -->
+                                                    <div class="pic-list-writer">
+                                                        <div class="profile"><img src="../image/profile.png" alt="프로필 사진" /></div>
+                                                    </div>
+                                                    <!-- 이력내용 -->
+                                                    <div class="pic-list-desc">
+                                                        <span class="name">백다방</span> added Checklist to git 수정된 문서 확인
+                                                    </div>
+                                                    <!-- 시간/날짜 -->
+                                                    <p class="pic-list-datetime">2 hours ago</p>
+                                                </li>
+                                            </ul>
+                                            <!-- 이력 더 보기 -->
+                                            <a class="show-more" href="#">View all activity…</a>
+                                        </div>
+                                    </div>
+                                </li><!-- /이력목록 -->
+
+                                <!-- Tab2 | 달성목록 -->
+                                <li>
+                                    <div class="nav-tab-btn"><a href="#">menu2</a></div>
+                                    <div class="nav-tab-content"><div class="tab-content-box">menu2</div></div>
+                                </li><!-- /Tab2 | 달성목록 -->
+                                
+                                <!-- Tab3 | 가리기목록 -->
+                                <li>
+                                    <div class="nav-tab-btn"><a href="#">menu3</a></div>
+                                    <div class="nav-tab-content"><div class="tab-content-box">menu2</div></div>
+                                </li><!-- /Tab3 | 가리기목록 -->
+                                
+                                <!-- Tab4 | 설정 -->
+                                <li>
+                                    <div class="nav-tab-btn"><a href="#">settings</a></div>
+                                    <div class="nav-tab-content">
+                                        <div class="tab-content-box">
+                                            <!--팀 멤버 프로필 사진-->
+                                            <div class="all-members">
+                                                <img src="../image/profile.png" class="profile-img" />
+                                                <img src="../image/profile.png" class="profile-img" />
+                                                <img src="../image/profile.png" class="profile-img" />
+                                                <img src="../image/profile.png" class="profile-img" />
+                                                <img src="../image/profile.png" class="profile-img" />
+                                                <img src="../image/profile.png" class="profile-img" />
+                                                <img src="../image/profile.png" class="profile-img" />
+                                                <img src="../image/profile.png" class="profile-img" />
+                                            </div>
+                                            <!--초대 버튼-->
+                                            <div class="invite">
+                                                <a href="#" class="invite-button">
+                                                    <span class="invite-icon"><i class="fas fa-user-plus"></i></span>
+                                                    <span>invite</span>
+                                                </a>
+                                            </div>
+                                            <!--메뉴-->
+                                            <div class="mainAside-tab4-menu">
+                                                <div class="user-modify"><a href="#">회원정보수정</a></div>
+                                                <div class="user-modify"><a href="#">팀 정보 수정</a></div>
+                                                <div class="user-modify"><a href="#">프로젝트수정</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li><!-- /Tab4 | 설정 -->
+
+                            </ul>
+
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+
+
+
+
+    <script>
+        
+        /* 왼쪽 메뉴 확장&축소 이벤트 */
+        var i = 0;
+        var j = 0;
+        function openNav() {
+            var mainNav = document.getElementsByClassName("mainNav"); //확장메뉴
+            var content = document.getElementsByClassName("content"); //본문
+            var iconBar = document.getElementsByClassName("iconBar"); //축소메뉴
+            var logoBg = document.getElementsByClassName("logo-background"); //헤더 로고영역
+            var logoFull = document.getElementsByClassName("logo-full"); //확장로고
+            var logoMini = document.getElementsByClassName("logo-mini"); //축소로고
+
+            i++; //왼쪽 메뉴버튼 클릭할 때마다 i의 값 1씩 증가하도록
+
+            if (i % 2 == 1) { //클릭수가 홀수이면 축소메뉴 노출
+                content[0].style.marginLeft = "60px"; //본문 위치 메뉴너비에 맞춰 옮기기
+                iconBar[0].style.width = "60px"; //메뉴 영역 230px에서 60px로 줄이기
+                logoBg[0].style.width = "60px"; //로고 영역 230px에서 60px로 줄이기
+                mainNav[0].style.width = "0"; //확장메뉴 숨긴다
+                logoFull[0].style.width = "0"; //확장로고 숨긴다
+                logoMini[0].style.width = "60px"; //축소로고 너비 확보
+            }
+            else { //클릭수가 짝수이면 확장메뉴 노출
+                mainNav[0].style.width = "230px"; //확장메뉴 너비 확보
+                content[0].style.marginLeft = "230px"; //본문 위치 메뉴너비에 맞춰 옮기기
+                logoBg[0].style.width = "230px"; //확장시 로고영역 확보
+                logoFull[0].style.width = "230px"; //확장로고 너비 확보
+                logoMini[0].style.width = "0"; //축소로고 숨긴다
+            };
+        };
+
+
+        /* 오른쪽 메뉴 숨기기&펼치기 이벤트 */
+        var mainAside = document.getElementById('mainAside'); //오른쪽 메뉴 전체
+        var content = document.getElementsByClassName('content'); //본문
+        var activeTabNum = null;
+
+        function openAside() {
+            j++ //오른쪽 메뉴버튼 클릭할 때마다 j의 값 1씩 증가하도록
+
+            if (j % 2 == 1) { //클릭수가 홀수이면 펼치기
+                mainAside.classList.add('mainAside-open'); //클래스 이름 'mainAside-open' 추가
+                mainAside.style.width = "330px";
+                content[0].style.marginRight = "330px";
+                //활성화된 메뉴가 없다면 첫번째 탭 메뉴를 활성화
+                if (activeTabNum === null) {
+                    activeTabNum = 1;
+                    document.getElementsByClassName("nav-tabs")[0].children[0].classList.add('active');
+                };
+            } else { //클릭수가 짝수이면 숨기기
+                mainAside.classList.remove('mainAside-open'); //클래스 이름 'mainAside-open' 제거
+                mainAside.style.width = "0";
+                content[0].style.marginRight = "0";
+            };
+        };
+
+
+        $(document).ready(function () {
+            //오른쪽 메뉴 탭버튼 제어
+            $(".mainAside .nav-tabs > li").on("click", function () {
+                //모든 탭버튼 비활성화
+                $(".mainAside .nav-tabs > li").removeClass("active");
+                //클릭한 탭버튼 활성화
+                $(this).addClass("active");
+                //현재 활성화된 탭의 번호를 저장
+                var idx = $(".mainAside .nav-tabs>li").index(this);
+                activeTabNum = idx;
+            });
+        });
+        
+
+        /* 헤더 프로필단추 dropdown메뉴 */
+        function openProfileSetting() {
+            document.getElementById("riMenu-dropdown").classList.toggle("show");
+        };//riMenu-dropdown 누르면 class이름 show 추가됨(show: display block)
+
+        window.onclick = function (e) {
+            if (!e.target.matches('.rtMenu-profile img')) {
+                var riMenuDropdown = document.getElementById("riMenu-dropdown");
+                if (riMenuDropdown.classList.contains('show'))
+                    riMenuDropdown.classList.remove('show');
+            };
+        };
+
+
+
+
+
+
+
+
+        // 전체를 감싸는 컨테이너 변수 선언
+        var body = document.getElementById("body");
+        var container = document.getElementById("container");
+        // 붉은 색상 박스 변수 선언
+        var addListBtn = document.getElementById("add-a-list-btn");
+        // 저장 버튼 변수 선언
+        var saveListBtn = document.getElementById("save-list-btn");
+        // 붉은 색상 박스를 클릭했을때 나오는 박스 변수 선언
+        var saveListBox = document.getElementById("save-list-box");
+        // 인풋박스를 변수에 담는 것
+        var listInputBox = document.getElementById("list-input-box");
+        // 카드리스트의 타이틀을 담는 변수를 선언
+        var textValue;
+
+        // 데이터베이스가 존재하지않아서 임시적으로 값을 담을 배열 컨테이너.
+        var data = {
+            lists: []
+        };
+
+        // 저장버튼을 누르면 기존에 있는 폼을 보이지않게하고 새로운 add-a-list-btn으로 보이게되는 함수정의
+        function addList() {
+            saveListBox.style.display = "inline-block";
+            addListBtn.style.display = "none";
+        }
+
+        function createList(textValue) {
+            //textValue가 null이 아니면 true가 되어 if문을 실행함   
+            if (textValue) {
+                //캬드리스트에 가장큰 박스
+                var parentDiv = document.createElement("div");
+                // 카드리스트에 타이틀을 담을 박스
+                var listTitle = document.createElement("div");
+                //카드리스트에 타이틀 박스
+                var title = document.createElement("div");
+                //a태그를 선언하고 dotIcon에 변수에 담음
+                var dotIcon = document.createElement("a");
+                // 사용자가 입력한 타이틀을 담는 변수선언
+                var newTextNode = document.createTextNode(textValue);
+                //
+                var addCardLink = document.createElement("a");
+                //TextNote는 일반적text값을 부여함
+                var addText = document.createTextNode("카드를 추가 하시겠습니까?");
+                var bodywidth = document.getElementsByTagName('body');
+                //데이터를 담을 임시의 변수
+                var lists;
+                //for문을 변수돌릴 변수 선언 ex)자바에서 int i 처럼
+                var x;
+                //??안씀
+                var y;
+
+                data.lists.push({
+
+                    title: textValue,
+
+                    // 카드리스트 제목이 여러개이듯 카드또한 여러개를 넣어야해서 배열로 선언한다.
+                    cards: []
+                });
+                // 이해가 안되서 필주씨에게 물어보는걸로.. 객체의 MAP을 이벤트함.
+                lists = data.lists.map(function (event) {
+                    return event;
+                });
+
+                //새로운 태그를 만드는 자바스크립트문 ex) <div><div><a></a></div></div> 이런식 스크립트로 짜놓은것
+                for (x = 0; x < lists.length; x++) {
+                    parentDiv.setAttribute("class", "add-card-container");
+                    parentDiv.setAttribute("id", "list-container" + x);
+                    dotIcon.setAttribute("class", "fas fa-ellipsis-h");
+                    dotIcon.setAttribute("id", "del" + x);
+
+                    //contenteditable은 고정값이아니라 클릭시 값을 변경할수있게하는 기능 true로 속성값을 변경시에
+                    title.setAttribute("contenteditable", "true");
+                    title.setAttribute("class", "text");
+                    title.appendChild(newTextNode);
+                    listTitle.appendChild(dotIcon);
+                    listTitle.setAttribute("class", "list-title");
+                    listTitle.appendChild(title);
+                    addCardLink.setAttribute("href", "#");
+                    addCardLink.setAttribute("class", "add-card");
+                    addCardLink.setAttribute("id", "add" + x);
+                    addCardLink.appendChild(addText);
+                    //  parentDiv.style.cssFloat="left";
+                    parentDiv.style.display = "inline-block";
+                    parentDiv.style.height = "100%";
+                    parentDiv.appendChild(listTitle);
+                    parentDiv.appendChild(addCardLink);
+                    container.insertBefore(parentDiv, addListBtn);
+                    addListBtn.style.display = "inline-block";
+                    saveListBox.style.display = "none";
+                    listInputBox.value = "";
+
+                    document.getElementById("add" + x).addEventListener('click', addCards(x));
+
+
+                }
+
+
+            }
+        }
+        var count = 0;
+        window.addEventListener("load", function () {
+
+            //add버튼을 클릭시 addlistbtn은 사라지고 savelistbox는 나타나는 함수
+            addListBtn.addEventListener("click", function () {
+                addList();
+            });
+            saveListBtn.addEventListener("click", function () {
+                // body의 스타일의 width 값을 가져와서 숫자를 paseInt로 숫자로 변경후 값을 +200 더한후
+                //다시 그 값을 String으로 변환후 style로 값을 재지정해서 body의 값이 카드리스트가 하나생길때마다
+                //body width가 200px씩 증가해서 무한 스크롤을 하게한다.
+                //추후 나중에 메인이랑 합칠시 dIv로 만감쌀테니 그러면 스크롤바가 반만 생기니 그떄는 body의 width도 같이 늘려줘야한다.
+                if (count > 4) {
+                    var containerWidth = body.style.width;
+                    var subget = containerWidth.substring(0, 4);
+                    var test = parseInt(subget) + 15;
+                    console.log(test);
+                    containerWidth = 'width :' + test + '%';
+                    console.log(containerWidth);
+                    body.setAttribute("style", containerWidth);
+                }
+                count++;
+                //타이틀을 받아온 값을 textValue에 담는 과정
+                textValue = listInputBox.value;
+                //정의된 함수를 호출하고 매개변수로 타이틀을 넣어준다.
+                createList(textValue);
+            });
+
+
+
+        });
+
+       
+    </script>
+
+
+</body>
+</html>

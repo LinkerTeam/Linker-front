@@ -1,0 +1,210 @@
+﻿@charset "UTF-8";
+/* html에서 width가  box사이즈를 넘어가는걸  방지하는 css문. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    top: 0;
+}
+
+/*
+overflow: auto;
+overflow의 값을 auto로 설정할 경우 부모요소의 범위를 넘어가는
+자식요소의 부분이 있을 경우 해당 부분을 보이지 않도록 처리하고,
+사용자가 해당 부분을 확인 할수 있도록 스크롤바를 표시.
+*/
+
+#cardlistContainer {
+    width: 100%;
+    overflow: auto;
+    margin-top: 30px;
+}
+
+/*
+붉은색 색상 박스(안쪽에 리스트 추가 텍스트 있음)
+*/
+#add-a-list-btn {
+    background-color: #963C2B;
+    padding: 12px;
+    margin-left: 10px;
+    border-radius: 3px;
+    color: #F5D3CE;
+    display: block;
+    width: 246px;
+}
+
+    /*
+cursor: pointer;
+호버했을때, 커서모양을 손가락 모양으로 변경한다.
+ */
+    #add-a-list-btn:hover {
+        cursor: pointer;
+        background-color: #7C3123;
+    }
+
+/*
+붉은 색상 박스를 클릭했을때
+카드 메세지 입력 창이 나타남.
+*/
+#save-list-box {
+    background-color: #E2E4E6;
+    margin-left: 10px;
+    padding: 4px;
+    border-radius: 2px;
+    width: 262px;
+    height: 70px;
+    display: none;
+}
+
+/*
+붉은 박스 클릭 >> 입력창추가 >> 안의 박스
+*/
+#list-input-box {
+    background-color: #D7D9DB;
+    width: 250px;
+    height: 25px;
+    padding: 3px 5px;
+    font-size: 14px;
+    color: #575757;
+    /*
+박스 안의 글자 색상
+cursor: text;
+커서모양을 텍스트 입력할때 나오는 모양으로 바꾼다.
+box-shadow: inset 0 0 10px rgba(0, 0, 0, .1);
+각자 공부해~
+*/
+    font-family: helvetica;
+    border-radius: 3px;
+    border-style: none;
+    border: 1px solid #AAAAAA;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, .1);
+    cursor: text;
+}
+
+/*
+'저장' 버튼 스타일 지정
+*/
+#save-list-btn {
+    font-family: helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 4px;
+    background-color: #5EB54A;
+    border-style: none;
+    border-radius: 2px;
+    color: white;
+    padding: 7px 8px 8px 8px;
+    box-shadow: 0 1px 2px 0 black;
+    width: 72px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/*
+'취소' 버튼 스타일 지정
+*/
+#cancle-list-btn {
+    font-family: helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 4px;
+    background-color: #5EB54A;
+    border-style: none;
+    border-radius: 2px;
+    color: white;
+    padding: 7px 8px 8px 8px;
+    box-shadow: 0 1px 2px 0 black;
+    width: 72px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* 만들어진 카드리스트에 타이틀값 속성 */
+.text {
+    font-weight: bold;
+    font-size: 14px;
+    color: #646464;
+    width: 220px;
+    padding: 4px 4px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+/* 카드리스트 컨테이너의 속성 카드리스트에 가장큼 폼 */
+.add-card-container {
+    /*add a card... grey box*/
+    background-color: #E2E4E6;
+    margin-left: 10px;
+    border-radius: 3px;
+    height: auto;
+}
+/* 카드의 색상을 지정하고 카드값을 정해준다. 그리고 눌렀을때 변하게해준다. */
+.add-card {
+    /*Add a card... text*/
+    text-decoration: none;
+    display: block;
+    color: #838C91;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+
+    /*  카드를 마우스 위로 올렸을떄 나타는 css */
+    .add-card:hover {
+        text-decoration: underline;
+        color: #515252;
+        background-color: #CDD2D4;
+    }
+
+/* 카드간에 간격과 마진을 줌 */
+.list-title {
+    margin: 5px 5px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    width: 260px;
+    height: auto;
+    cursor: pointer;
+}
+
+.fa-ellipsis-h {
+    padding: 5px 5px;
+    color: #838C91;
+    float: right;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+    .fa-ellipsis-h:hover {
+        color: #737475;
+        background: #CDD2D4;
+    }
+
+
+
+    /* +) 헤더부분 추가*/
+/*.content-header {
+    position: fixed;
+    width: 100%;
+    top: 50px;
+    height: 30px;
+    background-color: yellow;
+}
+.content-header-projectName {
+    font-size: 14pt;
+    line-height: 30px;
+    margin-left: 15px;
+}
+.content-header-menu {
+    float: right;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    height: 20px;
+    font-size: 11pt;
+}
+    .content-header-menu a {
+        color: black;
+    }*/
